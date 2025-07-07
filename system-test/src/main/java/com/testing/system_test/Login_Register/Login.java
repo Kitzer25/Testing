@@ -1,5 +1,7 @@
 package com.testing.system_test.Login_Register;
 
+import java.time.Duration;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,10 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.time.Duration;
-
-public class Access {
-
+public class Login {
+    
         public static void main(String[] args) {
                 System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\chromedriver-win64\\chromedriver.exe");
 
@@ -28,35 +28,30 @@ public class Access {
 
             // 2. Espera y clic en "Inicia sesión aquí" para ir al registro
             Thread.sleep(2000);
-            WebElement registerLink = driver.findElement(By.xpath("//*[@id=\"root\"]/main/header/nav/button[2]"));
-            registerLink.click();
+            WebElement loginbtn = driver.findElement(By.xpath("//*[@id=\"root\"]/main/header/nav/button[1]"));
+            loginbtn.click();
 
             // 3. Espera a que cargue formulario de registro
             Thread.sleep(2000);
 
             // 4. Llenar los campos
-            WebElement nombreInput = driver.findElement(By.xpath("//input[@placeholder='Nombre']"));
-            WebElement correoInput = driver.findElement(By.xpath("//input[@placeholder='Correo']"));
-            WebElement usuarioInput = driver.findElement(By.xpath("//input[@placeholder='Usuario']"));
-            WebElement contrasenaInput = driver.findElement(By.xpath("//input[@placeholder='Contraseña']"));
+            WebElement usuarioInput = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/form/input[1]"));
+            WebElement passwordInput = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/form/input[2]"));
 
-            nombreInput.sendKeys("Juan Pérez");
-            correoInput.sendKeys("test@gmail.com");
             usuarioInput.sendKeys("test");
-            contrasenaInput.sendKeys("123456");
+            passwordInput.sendKeys("123456");
 
             // 5. Hacer clic en el botón "Registrarse"
-            WebElement registrarBtn = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/form/button"));
-            registrarBtn.click();
+            WebElement loguearse = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/form/button"));
+            loguearse.click();
 
             // 6. Espera para ver resultado
             Thread.sleep(2000);
-
             Alert alert = driver.switchTo().alert();
             System.out.println("Alerta: " + alert.getText());  // opcional
             alert.accept();
 
-            Thread.sleep(2000);
+            Thread.sleep(3000);
 
         } catch (Exception e) {
             e.printStackTrace();

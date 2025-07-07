@@ -1,5 +1,7 @@
 package com.testing.system_test.Login_Register;
 
+import java.time.Duration;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,12 +9,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.time.Duration;
-
-public class Access {
-
-        public static void main(String[] args) {
-                System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\chromedriver-win64\\chromedriver.exe");
+public class Inccorect_Register {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\chromedriver-win64\\chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
@@ -40,23 +39,28 @@ public class Access {
             WebElement usuarioInput = driver.findElement(By.xpath("//input[@placeholder='Usuario']"));
             WebElement contrasenaInput = driver.findElement(By.xpath("//input[@placeholder='Contraseña']"));
 
-            nombreInput.sendKeys("Juan Pérez");
-            correoInput.sendKeys("test@gmail.com");
-            usuarioInput.sendKeys("test");
-            contrasenaInput.sendKeys("123456");
+            nombreInput.sendKeys("");
+            correoInput.sendKeys("mauricio2511@gmail.com"); //Cambiar contraseña
+            usuarioInput.sendKeys("");
+            contrasenaInput.sendKeys("MCV2511");
 
-            // 5. Hacer clic en el botón "Registrarse"
+            Thread.sleep(1800);
             WebElement registrarBtn = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/form/button"));
             registrarBtn.click();
 
-            // 6. Espera para ver resultado
             Thread.sleep(2000);
+            nombreInput.sendKeys("Mauricio Alexander");
+            usuarioInput.sendKeys("kitzer2511");  //Cambiar usuario
 
+            registrarBtn.click();
+
+            Thread.sleep(2000);
             Alert alert = driver.switchTo().alert();
-            System.out.println("Alerta: " + alert.getText());  // opcional
+            System.out.println("Alerta: " + alert.getText());
             alert.accept();
 
-            Thread.sleep(2000);
+            Thread.sleep(3000);
+
 
         } catch (Exception e) {
             e.printStackTrace();
