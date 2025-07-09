@@ -17,7 +17,7 @@ public class InicioyComentario {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         options.addArguments("--remote-allow-origins=*");
-        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+        options.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
         options.setExperimentalOption("useAutomationExtension", false);
 
         // Desactiva guardado de contraseñas
@@ -43,7 +43,7 @@ public class InicioyComentario {
             WebElement passwordInput = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/form/input[2]"));
 
             usuarioInput.sendKeys("test");
-            passwordInput.sendKeys("123456");
+            passwordInput.sendKeys("123");
 
             // 3. Clic en botón de login
             WebElement loguearse = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/form/button"));
@@ -62,10 +62,12 @@ public class InicioyComentario {
 
             // 5. Interactuar con comentario
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            WebElement comentario = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"comentarios\"]/form/textarea")));
+            WebElement comentario = wait
+                    .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"comentarios\"]/form/textarea")));
             comentario.sendKeys("Revisión y prueba de sistema");
 
-            WebElement enviarbtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"comentarios\"]/form/button")));
+            WebElement enviarbtn = wait
+                    .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"comentarios\"]/form/button")));
             enviarbtn.click();
 
             Thread.sleep(2000);

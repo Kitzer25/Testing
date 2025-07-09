@@ -11,13 +11,13 @@ import java.time.Duration;
 
 public class Access {
 
-        public static void main(String[] args) {
-                System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\chromedriver-win64\\chromedriver.exe");
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\chromedriver-win64\\chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         options.addArguments("--remote-allow-origins=*");
-        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+        options.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
         options.setExperimentalOption("useAutomationExtension", false);
 
         WebDriver driver = new ChromeDriver(options);
@@ -40,9 +40,9 @@ public class Access {
             WebElement usuarioInput = driver.findElement(By.xpath("//input[@placeholder='Usuario']"));
             WebElement contrasenaInput = driver.findElement(By.xpath("//input[@placeholder='Contraseña']"));
 
-            nombreInput.sendKeys("Juan Pérez");
+            nombreInput.sendKeys("Juan Prez");
             correoInput.sendKeys("test@gmail.com");
-            usuarioInput.sendKeys("test");
+            usuarioInput.sendKeys("testa");
             contrasenaInput.sendKeys("123456");
 
             // 5. Hacer clic en el botón "Registrarse"
@@ -53,7 +53,7 @@ public class Access {
             Thread.sleep(2000);
 
             Alert alert = driver.switchTo().alert();
-            System.out.println("Alerta: " + alert.getText());  // opcional
+            System.out.println("Alerta: " + alert.getText()); // opcional
             alert.accept();
 
             Thread.sleep(2000);

@@ -11,12 +11,12 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Comentarios {
     public static void main(String[] args) {
-                System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\chromedriver-win64\\chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
         options.addArguments("--remote-allow-origins=*");
-        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+        options.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
         options.setExperimentalOption("useAutomationExtension", false);
 
         WebDriver driver = new ChromeDriver(options);
@@ -28,16 +28,15 @@ public class Comentarios {
             // 4. Llenar los campos
             WebElement comentario = driver.findElement(By.xpath("//*[@id=\"comentarios\"]/form/textarea"));
             WebElement enviarbtn = driver.findElement(By.xpath("//*[@id=\"comentarios\"]/form/button"));
-        
 
-            comentario.sendKeys("Prueba de comentatios");
+            comentario.sendKeys("");
             Thread.sleep(1700);
 
             enviarbtn.click();
             Thread.sleep(2000);
 
             Alert alert = driver.switchTo().alert();
-            System.out.println("Alerta: " + alert.getText());  // opcional
+            System.out.println("Alerta: " + alert.getText()); // opcional
             alert.accept();
 
             Thread.sleep(3000);
